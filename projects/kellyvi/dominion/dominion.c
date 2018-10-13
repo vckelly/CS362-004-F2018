@@ -704,7 +704,7 @@ int playVillage(int currentPlayer, int handPos, struct gameState *state) {
   //Increase num actions by 5 instead of 2
   state->numActions = state->numActions + 5;
 
-  state->numActions = state->numActions + 2;
+  //state->numActions = state->numActions + 2;
 
   
   //discard played card from hand
@@ -723,7 +723,7 @@ int playGreat_Hall(int currentPlayer, int handPos, struct gameState *state) {
   //***BUG***
   //Take discard out of Great Hall function
   //discardCard(handPos, currentPlayer, state, 0);
-  discardCard(handPos, currentPlayer, state, 0);
+  //discardCard(handPos, currentPlayer, state, 0);
 
   return 0;
 }
