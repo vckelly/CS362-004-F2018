@@ -644,7 +644,6 @@ int getCost(int cardNumber)
 }
 
 int playSmithy(int currentPlayer, int handPos, struct gameState *state){
-<<<<<<< HEAD
     //+3 cards
     //***BUG***
     //Changed card draw from +3 to +5
@@ -656,7 +655,6 @@ int playSmithy(int currentPlayer, int handPos, struct gameState *state){
         //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
     return 0;
-=======
   //+3 Cards
       for (int i = 0; i < 3; i++)
   {
@@ -666,7 +664,6 @@ int playSmithy(int currentPlayer, int handPos, struct gameState *state){
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
       return 0;
->>>>>>> 50668a34a1d8b37318bc099b0c42f78b37dada81
     
 }
 
@@ -676,13 +673,13 @@ int playAdventurer(int currentPlayer, int drawntreasure, int temphand[MAX_HAND],
       shuffle(currentPlayer, state);
     }
     drawCard(currentPlayer, state);
-<<<<<<< HEAD
+
     //***BUG***
     //Instead of checking card, check third card from top
     int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-3];//top card of hand is most recently drawn card.
-=======
-    int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
->>>>>>> 50668a34a1d8b37318bc099b0c42f78b37dada81
+
+    //int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
       drawntreasure++;
     else{
@@ -703,13 +700,12 @@ int playVillage(int currentPlayer, int handPos, struct gameState *state) {
   drawCard(currentPlayer, state);
   
   //+2 Actions
-<<<<<<< HEAD
   //***BUG***
   //Increase num actions by 5 instead of 2
   state->numActions = state->numActions + 5;
-=======
+
   state->numActions = state->numActions + 2;
->>>>>>> 50668a34a1d8b37318bc099b0c42f78b37dada81
+
   
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
@@ -724,13 +720,11 @@ int playGreat_Hall(int currentPlayer, int handPos, struct gameState *state) {
   state->numActions++;
   
   //discard card from hand
-<<<<<<< HEAD
   //***BUG***
   //Take discard out of Great Hall function
   //discardCard(handPos, currentPlayer, state, 0);
-=======
   discardCard(handPos, currentPlayer, state, 0);
->>>>>>> 50668a34a1d8b37318bc099b0c42f78b37dada81
+
   return 0;
 }
 
