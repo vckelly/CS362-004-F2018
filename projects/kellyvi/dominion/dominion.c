@@ -656,14 +656,14 @@ int playSmithy(int currentPlayer, int handPos, struct gameState *state){
     discardCard(handPos, currentPlayer, state, 0);
     return 0;
   //+3 Cards
-      for (int i = 0; i < 3; i++)
-  {
-    drawCard(currentPlayer, state);
-  }
+  //     for (int i = 0; i < 3; i++)
+  // {
+  //   drawCard(currentPlayer, state);
+  // }
       
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+  //     //discard card from hand
+  //     discardCard(handPos, currentPlayer, state, 0);
+  //     return 0;
     
 }
 
