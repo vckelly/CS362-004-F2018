@@ -10,28 +10,43 @@ int main(){
 
     printf("\n\nCard Test: Great Hall\n\n");
 
-    int cards[10] = {adventuresr, great_hall, embargo, village, minion, mine, cutpurse,
+    int cards[10] = {adventurer, great_hall, embargo, village, minion, mine, cutpurse,
         sea_hag, tribute, smithy};
 
+    int err_flag = 0;
     struct gameState g1, testGame;
 
     initializeGame(2, cards, 256, &g1);
 
     memcpy(&testGame, &g1, sizeof(struct gameState));
 
-    int turn = whoseTurn(&g);
-    cardEffect(cards[1], 0, 0, 0, &g, 0, NULL);
+    int turn = whoseTurn(&g1);
+    cardEffect(cards[1], 0, 0, 0, &g1, 0, NULL);
 
-    assert(g.handCount[turn] == testGame.handCount[turn]);
+    assert(g1.handCount[turn] == testGame.handCount[turn]);
 
-    assert(g.numActions > testGame.numActions);
-    assert(g.numActions == testGame.numActions + 1);
 
-    assert(g.discardCount[turn] > testGame.discardCount[turn]);
-    assert(g.discardCount[turn] == testGame.discardCount[turn] - 1);
+    if (g1.numActions == testGame.numActions + 1){
+        printf("Num actions incremented succesfully\n!");
+    }
+    else{
+        printf("Num actions incremented succesfully\n!");
+        err_flag = 1;
+    }
 
-    printf("\nCard test for Great Hall has passed!\n");
+    if (g1.discardCount[turn] == testGame.discardCount[turn] - 1){
+        printf("Discard counts incremented succesfully\n!");
+    }
+    else{
+        printf("Error: Discard counts not incremented correctly\n");
+        err_flag = 1;
+    }
 
-    printf("\n\nCard Test: Great Hall has completed\n\n");
+    if (!(err_flag)){
+        printf("Card test for Great Hall has passed!\n");
+    }
+    else{
+        printf("***Card test for Great Hall finished with errors***\n");
+    }
 
 }

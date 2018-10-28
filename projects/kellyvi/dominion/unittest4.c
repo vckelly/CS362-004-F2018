@@ -11,15 +11,18 @@ int main(){
 //unit test for the supplyCount function
 
     struct gameState g1;
+    int cards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
+        sea_hag, tribute, smithy};
+    initializeGame(2, cards, 256, &g1);
 
-    int rand_ints[10] = [1,5,2,5,8,19,2,9,12,2];
+    int rand_ints[10] = {1, 5, 2, 5, 8, 19, 2, 9, 12, 2};
     int state_int = 0;
     
     int i;
 
     for (i = 0; i < 10; i++){
         g1.supplyCount[i] = rand_ints[i];
-        state_int = g1.supplyCount(i, &g1);
+        state_int = supplyCount(i, &g1);
 
         assert(state_int == rand_ints[i]);
     }

@@ -11,7 +11,11 @@ int main(){
 //unit test for the isGameOver function
 
     struct gameState g1;
-    int province, supply; 
+    int cards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
+        sea_hag, tribute, smithy};
+    initializeGame(2, cards, 256, &g1);
+
+    int province = 3;
 
     int state_int;
 
@@ -33,12 +37,6 @@ int main(){
     state_int = isGameOver(&g1);
 
     assert(state_int == 1);
-
-    g1.supplyCount[0] = 5;
-
-    state_int = isGameOver(&g1);
-
-    assert(state_int == 0);
 
     printf("\nFunc isGameOver test passed\n");
     

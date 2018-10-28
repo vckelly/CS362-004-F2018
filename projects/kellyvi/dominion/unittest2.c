@@ -11,9 +11,14 @@ int main(){
 //unit test for the handCard function
 
     struct gameState g1;
+    int cards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
+        sea_hag, tribute, smithy};
+
+    initializeGame(2, cards, 256, &g1);
+
     int player1 = 0;
 
-    int rand_ints[10] = [1,5,2,-4,8,10,2,9,12,2];
+    int rand_ints[10] = {1, 5, 2, -4, 8, 10, 2, 9, 12, 2};
     int state_int = 0;
     
     g1.handCount[player1] = 0;
@@ -22,8 +27,8 @@ int main(){
 
     int i;
     for (i = 0; i < 10; i++){
-        g1.handCount[player1] = rand_ints[i];
-        state_int = g1.handCard(player1, &g1);
+        g1.hand[player1][i] = rand_ints[i];
+        state_int = handCard(i, &g1);
 
         assert(state_int == rand_ints[i]);
 

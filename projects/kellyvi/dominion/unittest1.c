@@ -8,23 +8,27 @@
 
 int main(){
 
-//unit test for the whoseTurn function
-
+//unit test for the drawCard function
     struct gameState g1;
+    int cards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
+        sea_hag, tribute, smithy};
 
-    int turn_int = 0;
-    int state_int;
+    initializeGame(2, cards, 256, &g1);
 
-    int i;
-    for (i = 0; i < 10; i++){
-        g1.whoseTurn = turn;
-        state_int = whoseTurn(&g1);
+    int player1 = 0;
 
-        assert(state_int == turn);
+    int hand = g1.handCount[player1];
+    int deck = g1.deckCount[player1];
+    drawCard(player1, &g1);
 
-        turn++
-    }
+    assert(g1.handCount[player1] > hand);
+    assert(g1.deckCount[player1] < deck);
 
-    printf("\nFunc whoseTurn test passed\n");
+    g1.deckCount[player1] = 0;
+    drawCard(player1, &g1);
+
+    assert(g1.discardCount[player1] == 0);
+
+    printf("\nFunc drawCard test passed\n");
     return 0;
 }

@@ -8,10 +8,12 @@
 
 int main(){
 
-    printf("\n\nCard Test: Adventurer\n\n");
+    printf("\nCard Test: Adventurer\n");
 
     int cards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
         sea_hag, tribute, smithy};
+
+    int err_flag = 0;
 
     struct gameState g1, testGame;
 
@@ -19,20 +21,29 @@ int main(){
 
     memcpy(&testGame, &g1, sizeof(struct gameState));
 
-    int turn = whoseTurn(&g);
-    cardEffect(cards[0], 0, 0, 0, &g, 0, NULL);
+    int turn = whoseTurn(&g1);
+    cardEffect(cards[0], 0, 0, 0, &g1, 0, NULL);
 
-    assert(g.handCount[turn] > testGame.handCount[turn]);
-    assert(g.handCount[turn] >= testGame.handCount[turn] + 2);
+    if (g1.handCount[turn] >= testGame.handCount[turn] + 2){
+        printf("Hand counts incremented succesfully\n!");
+    }
+    else{
+        printf("Error: Hand count not incremented correctly\n");
+        err_flag = 1;
+    }
 
-    assert(g.deckCount[turn] < testGame.deckCount[turn]);
-    assert(g.deckCount[turn] <= testGame.deckCount[turn] + 2);
+    if (g1.deckCount[turn] <= testGame.deckCount[turn] + 2){
+        printf("Discard counts incremented succesfully\n!");
+    }
+    else{
+        printf("Error: Discard counts not incremented correctly\n");
+        err_flag = 1;
+    }
 
-    assert(g.discardCount[turn] > testGame.discardCount[turn]);
-    assert(g.discardCount[turn] >= testGame.discardCount[turn] - 1);
-
-    printf("\nCard test for Adventurer has passed!\n");
-
-    printf("\n\nCard Test: Adventurer has completed\n\n");
-
+    if (!(err_flag)){
+        printf("Card test for Adventurer has passed!\n");
+    }
+    else{
+        printf("***Card test for Smithy finished with errors***\n");
+    }
 }
